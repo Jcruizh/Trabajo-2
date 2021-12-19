@@ -76,4 +76,77 @@ public class imaginary_company {
                             boton=false;
                         }
                     }
-                
+                                    
+                    if(false==boton){
+                        if(contador<=9){
+                            ubicacionA.get(contador).add(serial2);
+                            int ubi=contador+1;
+                            System.out.println("La cola del vehiculo quedo ubicada en la posicion: "+ubi);
+                            if(ubicacionA.get(contador).size()==9){
+                                contador+=1;
+                            }
+                            System.out.println(ubicacionA);
+                            ocupados=0;
+                            break;
+                        }
+                    }
+            }
+                else{
+                    System.out.println("No es posible realizar este tramite,puerto lleno de automoviles");
+                    ocupados=0;
+                }
+            }
+            else if("2".equals(valores1)){   
+                    System.out.println("Digite el serial del Automovil a ser entregado(extraido)");
+                    int serials=entrada.nextInt();//Requisito 3
+                    for(int h=0;h<ubicacionA.size();h++){
+                    if(ubicacionA.get(h).contains(serials)){ //Busqueda de lugar
+                            lugar=h;
+                            boton=true;
+                            break;
+                        }
+                    else{
+                        boton=false;
+                    }
+                }
+                if(boton==true){
+                posicion=ubicacionA.get(lugar).indexOf(serials)+1;
+                lugar+=1;
+                System.out.println("Actualmente el automovil "+serials+" se encuentra en la cola "+lugar+" en la ubicacion de salida de "+posicion);
+                contador=lugar-1;
+                if(posicion==1 && contador>=0){
+                    ubicacionA.get(contador).removeFirst();
+                    System.out.println(contador);
+                }
+                if(posicion>1 && contador<9){
+                    System.out.println("Proceso a hacer con los automoviles: ");//proceso que se hace dentro del puerto
+                    System.out.println("Los vehiculos fueron seran movidos a colas y devueltos a la posicion inicial a ser parte de la cola ubicada en "+(contador+1));
+                    for(int i=0;i<posicion-1;i++){
+                        int a=ubicacionA.get(contador).get(i); //internamente la operacion por eficiencia distribuye la cola
+                        ubicacionA.get(contador).add(a);
+                    }
+                    for(int i=0;i<posicion;i++){
+                        ubicacionA.get(contador).removeFirst();
+                    }
+                    System.out.println(ubicacionA);
+                    System.out.println("finalmente los indices respetado la entrada de colas y los oredenes de salida(FIFO) son :");
+                    for(int yita=0;yita<ubicacionA.get(contador).size();yita++){
+                        System.out.println("serial : "+ubicacionA.get(contador).get(yita));
+                    }
+                }
+                if(contador==9 && posicion!=1){
+                  System.out.println("Proceso a hacer con los automoviles: ");//proceso que se hace dentro del puerto
+                    System.out.println("Los vehiculos seran movidos a colas auxiliares y devueltos a la posicion inicial a ser parte de la cola ubicada en "+(contador+1));
+                    for(int i=0;i<posicion-1;i++){
+                        int a=ubicacionA.get(contador).get(i); //internamente la operacion por eficiencia distribuye la cola e
+                        ubicacionA.get(contador).add(a);
+                    }
+                    for(int i=0;i<posicion;i++){
+                        ubicacionA.get(contador).removeFirst();
+                    }
+                    System.out.println("finalmente los indices respetado la entrada de colas y los oredenes de salida(FIFO) son :");
+                    for(int yita=0;yita<ubicacionA.get(contador).size();yita++){
+                        System.out.println("serial : "+ubicacionA.get(contador).get(yita));
+                    }
+                }                
+                }
