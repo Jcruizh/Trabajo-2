@@ -31,8 +31,6 @@ public class imaginary_company {
                 alfa+=1;
             }
         }
-        System.out.println(ubicacionC);
-        System.out.println(ubicacionA);
         // Interfaz de usuario 
         while(true){
         System.out.println("¿A qué elemento del puerto deseas realizar algun tramite o proceso?(elige entre 1,2 y 3)");
@@ -85,7 +83,6 @@ public class imaginary_company {
                             if(ubicacionA.get(contador).size()==9){
                                 contador+=1;
                             }
-                            System.out.println(ubicacionA);
                             ocupados=0;
                             break;
                         }
@@ -116,7 +113,6 @@ public class imaginary_company {
                 contador=lugar-1;
                 if(posicion==1 && contador>=0){
                     ubicacionA.get(contador).removeFirst();
-                    System.out.println(contador);
                 }
                 if(posicion>1 && contador<9){
                     System.out.println("Proceso a hacer con los automoviles: ");//proceso que se hace dentro del puerto
@@ -128,7 +124,6 @@ public class imaginary_company {
                     for(int i=0;i<posicion;i++){
                         ubicacionA.get(contador).removeFirst();
                     }
-                    System.out.println(ubicacionA);
                     System.out.println("finalmente los indices respetado la entrada de colas y los oredenes de salida(FIFO) son :");
                     for(int yita=0;yita<ubicacionA.get(contador).size();yita++){
                         System.out.println("serial : "+ubicacionA.get(contador).get(yita));
@@ -251,7 +246,6 @@ for(int g=0; g<ubicacionC.size();g++){
                             if(ubicacionC.get(contador1).size()==5){
                                 contador1+=1;
                             }
-                            System.out.println(ubicacionC);
                             ocupados=0;
                             break;
                         }
@@ -280,19 +274,14 @@ for(int g=0; g<ubicacionC.size();g++){
                 lugar+=1;
                 System.out.println("Actualmente el Contenedores "+serialf+" se encuentra en la pila "+lugar+" en la ubicacion de salida de "+posicion);
                 contador1=lugar-1;
-                System.out.println(posicion);
-                System.out.println(contador1);
                 if(posicion==1 && contador1>=0){
                     ubicacionC.get(contador1).removeLast();
-                    System.out.println(contador1);
-                    System.out.println(ubicacionC);
                 }
                 if(posicion>1 && contador1<100){
                     System.out.println("Proceso a hacer con los Contenedores: ");//proceso que se hace dentro del puerto
                     System.out.println("Los contenedores seran movidos a pilas y devueltos a la posicion inicial a ser parte de la pila ubicada en "+(contador+1));
                     int correccion=ubicacionC.get(contador1).size();
                     ubicacionC.get(contador1).remove(correccion-posicion);// proceso que hace la pila manteniendo el orden de entrada LIFO de la pila
-                    System.out.println(ubicacionC);
                     System.out.println("finalmente cambiando los inidices respetando la entrada de pilas y los oredenes de salida(LIFO) son :");
                     for(int yi=ubicacionC.get(contador1).size()-1;yi>=0;yi--){
                         System.out.println("serial : "+ubicacionC.get(contador1).get(yi));
@@ -303,7 +292,6 @@ for(int g=0; g<ubicacionC.size();g++){
                     System.out.println("Los contenedores seran movidos a pila auxiliar y devueltos a la posicion inicial a ser parte de la pila ubicada en "+(contador+1));
                     int correccion=ubicacionC.get(contador1).size();
                     ubicacionC.get(contador1).remove(correccion-posicion);// proceso que hace la pila manteniendo el orden de entrada LIFO de la pila
-                    System.out.println(ubicacionC);
                     System.out.println("finalmente cambiando los inidices respetando la entrada de pilas y los oredenes de salida(LIFO) son :");
                     for(int yi=ubicacionC.get(contador1).size()-1;yi>=0;yi--){
                         System.out.println("serial : "+ubicacionC.get(contador1).get(yi));
