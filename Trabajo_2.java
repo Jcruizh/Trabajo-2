@@ -227,3 +227,84 @@ public class imaginary_company {
                         break;
                     }
                 }
+for(int g=0; g<ubicacionC.size();g++){
+                    ocupados+= ubicacionC.get(g).size();
+                }
+                if(ocupados<500){
+                    System.out.println("Digite el serial del Contenedor");
+                    int serialc=entrada.nextInt();
+                    for(int k=0;k<ubicacionC.size();k++){
+                        if(ubicacionC.get(k).contains(serialc)){ //Busqueda de elementos repetidos
+                            System.out.println("Atención,El serial del Contenedor ya esta en el sistema");
+                            boton= true;
+                            break;
+                        }
+                        else{
+                            boton=false;
+                        }
+                    }
+                    if(false==boton){
+                        if(contador1<=99){
+                            ubicacionC.get(contador1).add(serialc);
+                            int ubi=contador1+1;
+                            System.out.println("La pila de contenedores quedo ubicada en la posicion: "+ubi);
+                            if(ubicacionC.get(contador1).size()==5){
+                                contador1+=1;
+                            }
+                            System.out.println(ubicacionC);
+                            ocupados=0;
+                            break;
+                        }
+                    }
+                }
+                else{
+                    System.out.println("No es posible realizar este tramite,puerto lleno de Contenedores");
+                    ocupados=0;
+                }
+            }
+            else if("2".equals(valores2)){
+                System.out.println("Digite el serial del Contenedor a ser entregado(extraido)");
+                    int serialf=entrada.nextInt();//Requisito 3
+                    for(int h=0;h<ubicacionC.size();h++){
+                    if(ubicacionC.get(h).contains(serialf)){ //Busqueda de lugar
+                            lugar=h;
+                            boton=true;
+                            break;
+                        }
+                    else{
+                        boton=false;
+                    }
+                }
+                if(boton==true){
+                posicion=ubicacionC.get(lugar).size()-ubicacionC.get(lugar).indexOf(serialf);
+                lugar+=1;
+                System.out.println("Actualmente el Contenedores "+serialf+" se encuentra en la pila "+lugar+" en la ubicacion de salida de "+posicion);
+                contador1=lugar-1;
+                System.out.println(posicion);
+                System.out.println(contador1);
+                if(posicion==1 && contador1>=0){
+                    ubicacionC.get(contador1).removeLast();
+                    System.out.println(contador1);
+                    System.out.println(ubicacionC);
+                }
+                if(posicion>1 && contador1<100){
+                    System.out.println("Proceso a hacer con los Contenedores: ");//proceso que se hace dentro del puerto
+                    System.out.println("Los contenedores seran movidos a pilas y devueltos a la posicion inicial a ser parte de la pila ubicada en "+(contador+1));
+                    int correccion=ubicacionC.get(contador1).size();
+                    ubicacionC.get(contador1).remove(correccion-posicion);// proceso que hace la pila manteniendo el orden de entrada LIFO de la pila
+                    System.out.println(ubicacionC);
+                    System.out.println("finalmente cambiando los inidices respetando la entrada de pilas y los oredenes de salida(LIFO) son :");
+                    for(int yi=ubicacionC.get(contador1).size()-1;yi>=0;yi--){
+                        System.out.println("serial : "+ubicacionC.get(contador1).get(yi));
+                    }
+                }
+                if(contador1==100 && posicion!=1){
+                  System.out.println("Proceso a hacer con los Contenedores: ");//proceso que se hace dentro del puerto
+                    System.out.println("Los contenedores seran movidos a pila auxiliar y devueltos a la posicion inicial a ser parte de la pila ubicada en "+(contador+1));
+                    int correccion=ubicacionC.get(contador1).size();
+                    ubicacionC.get(contador1).remove(correccion-posicion);// proceso que hace la pila manteniendo el orden de entrada LIFO de la pila
+                    System.out.println(ubicacionC);
+                    System.out.println("finalmente cambiando los inidices respetando la entrada de pilas y los oredenes de salida(LIFO) son :");
+                    for(int yi=ubicacionC.get(contador1).size()-1;yi>=0;yi--){
+                        System.out.println("serial : "+ubicacionC.get(contador1).get(yi));
+                    }
