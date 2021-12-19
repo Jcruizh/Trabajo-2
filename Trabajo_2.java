@@ -308,3 +308,75 @@ for(int g=0; g<ubicacionC.size();g++){
                     for(int yi=ubicacionC.get(contador1).size()-1;yi>=0;yi--){
                         System.out.println("serial : "+ubicacionC.get(contador1).get(yi));
                     }
+               }                
+                }
+                else if(boton==false){
+                    System.out.println("El serial introducido no pertenece a ningun contenedor en el puerto");
+                }
+            }
+            else if("3".equals(valores2)){
+                //requisito 6
+                for(int ge=0; ge<ubicacionC.size();ge++){
+                    ocupados+= ubicacionC.get(ge).size();
+                }
+                int disponibles= 500-ocupados; 
+                System.out.println("El puerto actualmente cuenta con capacidad diponible de "+disponibles+" contenedores");
+                System.out.println("El puerto actulmente tiene un ocupamiento de "+ocupados+" contenedores");
+                disponibles=0;
+                ocupados=0;
+                break;
+            }
+            else if("4".equals(valores2)){
+                System.out.println("Digite la pila donde desea hacer la busqueda");
+                int indice=entrada.nextInt();
+                System.out.println("Los indices respetando las pilas y los oredenes de salida(LIFO) son :");
+                if(indice>=1 && indice<=5){
+                    for(int yi=ubicacionC.get(indice-1).size()-1;yi>=0;yi--){
+                        System.out.println("serial : "+ubicacionC.get(indice-1).get(yi));
+                    }
+                }
+                break;
+            }
+            else if("5".equals(valores2)){
+                System.out.println("Digite el serial del Contenedor a ser buscado");
+                int serialf=entrada.nextInt();//Requisito 10
+                for(int h=0;h<ubicacionC.size();h++){
+                    if(ubicacionC.get(h).contains(serialf)){ //Busqueda de luga
+                            lugar=h;
+                            boton=true;
+                            break;
+                        }
+                    else{
+                        boton=false;
+                    }
+                }
+                if(boton==true){
+                posicion=ubicacionC.get(lugar).size()-ubicacionC.get(lugar).indexOf(serialf);
+                lugar+=1;
+                System.out.println("Actualmente el contenedor "+serialf+" se encuentra en la pila "+lugar+" en la ubicacion de salida de "+posicion);
+            }
+                if(boton==false){
+                    System.out.println("El serial introducido no pertenece a ningun contenedor en el puerto");
+                }
+                break;
+            }
+            else if("6".equals(valores2)){
+                break;
+            }
+            }
+        else{
+            System.out.println("Este tramite aun no esta hablitado por el sistema, por favor elige entre las opciones 1,2,3,4,5 o 6");
+        }
+                }
+            }
+        else if("3".equals(valores)){
+                System.out.println("Cerrando puerto...");
+                break;
+        }
+        }
+        else{
+            System.out.println("Este tramite aun no esta hablitado por el sistema, por favor elige entre las opciones 1,2 y 3");
+        }
+    }
+}
+}
