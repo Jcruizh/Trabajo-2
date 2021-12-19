@@ -150,3 +150,80 @@ public class imaginary_company {
                     }
                 }                
                 }
+                else if(boton==false){
+                    System.out.println("El serial introducido no pertenece a ningun contenedor en el puerto");
+                }
+        }
+            else if("3".equals(valores1)){
+                //requisito 6
+                for(int g=0; g<ubicacionA.size();g++){
+                    ocupados+= ubicacionA.get(g).size();
+                }
+                int disponibles= 100-ocupados; 
+                System.out.println("El puerto actualmente cuenta con capacidad diponible de "+disponibles+" automoviles");
+                System.out.println("El puerto actulmente tiene un ocupamiento de "+ocupados+" automoviles");
+                disponibles=0;
+                ocupados=0;
+                break;
+            }
+            else if("4".equals(valores1)){
+                System.out.println("Digite la cola donde desea hacer la busuqueda");
+                int indice=entrada.nextInt();
+                System.out.println("Los indices respetado las colas y los oredenes de salida(FIFO) son :");
+                if(indice>=1 && indice<=10){
+                    for(int y=0;y<ubicacionA.get(indice-1).size();y++){
+                        System.out.println("serial : "+ubicacionA.get(indice-1).get(y));
+                    }
+                }
+                break;
+            }
+            else if("5".equals(valores1)){
+                System.out.println("Digite el serial del Automovil a ser buscado");
+                int seriala=entrada.nextInt();//Requisito 10
+                for(int h=0;h<ubicacionA.size();h++){
+                    if(ubicacionA.get(h).contains(seriala)){ //Busqueda de luga
+                            lugar=h;
+                            boton=true;
+                            break;
+                        }
+                    else{
+                        boton=false;
+                    }
+                }
+                if(boton==true){
+                posicion=ubicacionA.get(lugar).indexOf(seriala)+1;
+                lugar+=1;
+                System.out.println("Actualmente el automovil "+seriala+" se encuentra en la cola "+lugar+" en la ubicacion de salida de "+posicion);
+            }
+                else if(boton==false){
+                    System.out.println("El serial introducido no pertenece a ningun contenedor en el puerto");
+                }
+                break;
+            }
+            else if("6".equals(valores1)){
+                break;
+            }
+        }
+        else{
+            System.out.println("Este tramite aun no esta hablitado por el sistema, por favor elige entre las opciones 1,2,3,4,5 o 6");
+        }
+    }
+    }
+            if("2".equals(valores)){
+                while(true){
+        System.out.println("¿Que operación deseas realizar?(1,2,3,4,5 o 6)");
+        System.out.println("1. recibir un Contenedor");
+        System.out.println("2. entregar(extraer) un contenedor");
+        System.out.println("3. numero de contenedor(disponibles y llenos)");
+        System.out.println("4. conocer los elementos de una cola de contenedor");
+        System.out.println("5. Buscar algun contenedor");
+        System.out.println("6. Volver al panel inicial");
+        String valores2=entrada.next();
+        if("1".equals(valores2) || "2".equals(valores2) || "3".equals(valores2) || "4".equals(valores2)|| "5".equals(valores2)|| "6".equals(valores2) ){
+            if("1".equals(valores2)){
+                for(int j=0;j<ubicacionC.size();j++){
+                    if(ubicacionC.get(j).size()<5){
+                        contador1=j;
+                        break;
+                    }
+                }
